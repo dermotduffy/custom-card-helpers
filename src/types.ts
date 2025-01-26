@@ -274,11 +274,21 @@ export interface FrontendLocaleData {
   time_format: TimeFormat;
 }
 
+export interface LovelaceCardGridOptions {
+  rows?: number | string;
+  columns?: number | string;
+  min_rows?: number;
+  min_columns?: number;
+  max_rows?: number;
+  max_columns?: number;
+}
+
 export interface LovelaceCardConfig {
   index?: number;
   view_index?: number;
   type: string;
   [key: string]: any;
+  grid_options?: LovelaceCardGridOptions
 }
 
 export interface LovelaceCard extends HTMLElement {
@@ -287,6 +297,7 @@ export interface LovelaceCard extends HTMLElement {
   editMode?: boolean;
   getCardSize(): number | Promise<number>;
   setConfig(config: LovelaceCardConfig): void;
+  getGridOptions(): LovelaceCardGridOptions;
 }
 
 export interface LovelaceCardEditor extends HTMLElement {
